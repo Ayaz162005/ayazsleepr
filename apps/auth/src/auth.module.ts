@@ -16,6 +16,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { UsersService } from './users/users.service';
 import { UsersRepository } from './users/users.repository';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { HealthModule } from '@app/common/health/health.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
       }),
       inject: [ConfigService],
     }),
+    HealthModule,
   ],
 
   controllers: [AuthController],
