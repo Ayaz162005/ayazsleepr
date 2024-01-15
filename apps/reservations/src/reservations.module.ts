@@ -15,6 +15,7 @@ import { Client, ClientsModule, Transport } from '@nestjs/microservices';
 import { AUTH_SERVICE } from '@app/common';
 
 import { UserDocument, UserSchema } from '@app/common/models/user.schema';
+import { HealthModule } from '@app/common/health/health.module';
 
 @Module({
   imports: [
@@ -62,6 +63,7 @@ import { UserDocument, UserSchema } from '@app/common/models/user.schema';
         }),
       },
     ]),
+    HealthModule,
   ],
   controllers: [ReservationsController],
   providers: [

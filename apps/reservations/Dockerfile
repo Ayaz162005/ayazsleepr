@@ -6,11 +6,11 @@ COPY package.json ./
 COPY tsconfig.json tsconfig.json
 COPY nest-cli.json nest-cli.json
 
-
+RUN npm install
 COPY apps/reservations apps/reservations
 COPY libs libs
 
-RUN npm install -r
+RUN cd apps/reservations && npm install
 RUN npm run build reservations
 
 FROM node:alpine as production
@@ -27,4 +27,4 @@ COPY package.json ./
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ['node', 'dist/apps/reservations/main']
+CMD ["node", "dist/apps/reservations/main"]
